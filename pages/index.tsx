@@ -1,15 +1,28 @@
-import { NextPage } from "next";
-import { useSession } from "next-auth/react";
-import React from "react";
-
-const HomePage: NextPage = () => {
+import CustomRadioGroup from "components/CustomRadioGroup";
+import React, { useState } from "react";
+const HomePage = () => {
+  const [val, setVal] = useState<number | null>(null);
   return (
-    <div className="container">
-      <div className="grid place-content-center min-h-screen">
-        <div className="flex flex-col items-center gap-4">
-          <h1 className="text-4xl my-8">Welcome to NextJS DaisyUI Starter</h1>
-        </div>
-      </div>
+    <div className="w-fit m-4">
+      <CustomRadioGroup
+        label="My Radio Group"
+        value={val}
+        onChange={(val) => setVal(val)} // (parameter) val: number
+        options={[
+          {
+            label: "option 1",
+            value: 1,
+          },
+          {
+            label: "option 2",
+            value: 2,
+          },
+          {
+            label: "option 3",
+            value: 3,
+          },
+        ]}
+      ></CustomRadioGroup>
     </div>
   );
 };
